@@ -50,7 +50,9 @@ abstract contract ControlledERC721Transfer is IControlledERC721Transfer {
             revert NonExistentRequest();
         }
 
-        if(block.timestamp > request.requestEndTime)
+        if(block.timestamp > request.requestEndTime) {
+            revert RequestExpired(_tokenId);
+        }
 
         request.requestEndTime = block.timestamp + transferWindow;
         request.approved = _decision;

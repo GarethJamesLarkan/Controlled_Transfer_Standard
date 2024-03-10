@@ -9,4 +9,6 @@ interface IControlledERC721Transfer {
     error OnlyOwnerFunction(address caller);
 
     error NonExistentRequest();
+
+    error RequestExpired(uint256 tokenId);
 }
